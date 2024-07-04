@@ -34,6 +34,11 @@ cd $HOME/my
 git clone https://github.com/ad-8/scripts
 
 
+echo -e "\nnnn plugins"
+echo "********************"
+sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
+
+
 echo -e "\nchangig shell to fish"
 echo "********************"
 chsh -s /usr/bin/fish

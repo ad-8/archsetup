@@ -99,7 +99,7 @@ cd /tmp
 git clone https://github.com/jarun/nnn
 cd nnn
 make O_NERD=1
-make clean install
+make install
 
 
 echo -e "\n********************"
