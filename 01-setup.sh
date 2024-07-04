@@ -92,6 +92,16 @@ sed -i 's/#DefaultDeviceTimeoutSec=90s/DefaultDeviceTimeoutSec=30s/' /etc/system
 echo "done"
 
 
-echo "\n********************"
-echo -e "DONE"
+echo -e "\nInstalling nnn"
+echo "********************"
+pacman -R --noconfirm nnn
+cd /tmp
+git clone https://github.com/jarun/nnn
+cd nnn
+make O_NERD=1
+make clean install
+
+
+echo -e "\n********************"
+echo "DONE"
 echo "********************"
