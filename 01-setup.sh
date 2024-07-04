@@ -83,6 +83,15 @@ wget https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-x86_64.pkg.tar.zst
 pacman -U --noconfirm "$PWD/megasync-x86_64.pkg.tar.zst"
 pacman -Syu --noconfirm
 
+
+echo -e "\nsystemd timeouts"
+echo "********************"
+sed -i 's/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=30s/' /etc/systemd/system.conf
+sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=30s/' /etc/systemd/system.conf
+sed -i 's/#DefaultDeviceTimeoutSec=90s/DefaultDeviceTimeoutSec=30s/' /etc/systemd/system.conf
+echo "done"
+
+
 echo "\n********************"
 echo -e "DONE"
 echo "********************"
