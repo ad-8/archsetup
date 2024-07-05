@@ -12,7 +12,7 @@ rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
-# TODO `emacs --daemon` does NOT start anymore after this
+# TODO `emacs --daemon` does NOT start anymore after this (not even if the config files in the doom dir are replaced "manually")
 #rm -rf $HOME/.config/doom
 #git clone https://github.com/ad-8/doom-emacs-config $HOME/.config/doom
 #$HOME/.config/emacs/bin/doom sync

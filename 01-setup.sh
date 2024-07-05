@@ -102,6 +102,15 @@ make O_NERD=1
 make install
 
 
+echo -e "\ntabbed for nnn tabbed preview plugin"
+echo "********************"
+cd /tmp
+git clone https://git.suckless.org/tabbed
+cd tabbed
+make
+make install
+
+
 echo -e "\n********************"
 echo "DONE"
 echo "********************"
