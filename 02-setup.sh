@@ -10,11 +10,12 @@ echo -e "\ninstalling DOOM emacs"
 echo "********************"
 rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-$HOME/.config/emacs/bin/doom install
+~/.config/emacs/bin/doom install
 
-rm -rf $HOME/.config/doom
-git clone https://github.com/ad-8/doom-emacs-config $HOME/.config/doom
-$HOME/.config/emacs/bin/doom sync
+# TODO `emacs --daemon` does NOT start anymore after this
+#rm -rf $HOME/.config/doom
+#git clone https://github.com/ad-8/doom-emacs-config $HOME/.config/doom
+#$HOME/.config/emacs/bin/doom sync
 
 
 echo -e "\ndotfiles"
