@@ -1,13 +1,23 @@
 #!/usr/bin/bash
 
-echo -e "\ninstalling paru packages"
-echo "********************"
+print_heading() {
+    input_string="$*"
+    string_length=${#input_string}
+    asterisks_line=$(printf '%*s' "$string_length" | tr ' ' '*')
+
+    echo
+    echo "$asterisks_line"
+    echo "$input_string"
+    echo "$asterisks_line"
+}
+
+
+print_heading "installing paru packages"
 packages=$(grep -v '^$' paru-packages | sort | tr '\n' ' ')
 paru -S --needed --noconfirm $packages
 
 
-echo -e "\ninstalling DOOM emacs"
-echo "********************"
+print_heading "installing DOOM emacs"
 rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
@@ -18,8 +28,7 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 #$HOME/.config/emacs/bin/doom sync
 
 
-echo -e "\ndotfiles"
-echo "********************"
+print_heading "dotfiles"
 mkdir -p $HOME/.local/share
 rm -rf ~/.config/fish
 mkdir -p ~/my
@@ -29,22 +38,17 @@ cd dotfiles
 stow -vR --target=$HOME *
 
 
-echo -e "\nscripts"
-echo "********************"
+print_heading "scripts"
 cd $HOME/my
 git clone https://github.com/ad-8/scripts
 
 
-echo -e "\nnnn plugins"
-echo "********************"
+print_heading "nnn plugins"
 sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 
 
-echo -e "\nchangig shell to fish"
-echo "********************"
+print_heading "changig shell to fish"
 chsh -s /usr/bin/fish
 
 
-echo -e "\n********************"
-echo "DONE"
-echo "********************"
+print_heading "DONE"

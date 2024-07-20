@@ -1,23 +1,30 @@
 #!/usr/bin/bash
 
-echo -e "\nrunning pacman -Syu"
-echo "********************"
+print_heading() {
+    input_string="$*"
+    string_length=${#input_string}
+    asterisks_line=$(printf '%*s' "$string_length" | tr ' ' '*')
+
+    echo
+    echo "$asterisks_line"
+    echo "$input_string"
+    echo "$asterisks_line"
+}
+
+print_heading "pacman -Syu"
 pacman -Syu --noconfirm
 
 
-echo -e "\ninstalling MY packages"
-echo "********************"
+print_heading "installing pacman packages"
 packages=$(grep -v '^$' pacman-packages | sort | tr '\n' ' ')
 pacman -S --needed --noconfirm $packages
 
 
-echo -e "\ninstalling dependencies for dwm"
-echo "********************"
+print_heading "installing dependencies for dwm"
 pacman -S --needed --noconfirm gcc make base-devel libx11 libxft libxinerama
 
 
-echo -e "\ninstalling dwm"
-echo "********************"
+print_heading "installing dwm"
 cd /tmp
 git clone https://github.com/ad-8/dwm-ax
 cd dwm-ax
@@ -30,7 +37,7 @@ make
 make clean install
 
 
-# dwmblocks
+print_heading "installing dwmblocks"
 cd /tmp
 git clone https://github.com/ad-8/dwmblocks
 cd dwmblocks
@@ -38,21 +45,18 @@ make
 make clean install
 
 
-echo -e "\nFlatpak stuff"
-echo "********************"
+print_heading "Flatpak stuff"
 pacman -S --needed --noconfirm flatpak
 flatpak install --assumeyes flathub io.gitlab.librewolf-community
 flatpak install --assumeyes flathub ch.protonmail.protonmail-bridge
 
 
-echo -e "\nInstalling Rust"
-echo "********************"
+print_heading "Installing Rust"
 pacman -S --needed --noconfirm rustup
 sudo -u ax rustup default stable
 
 
-echo -e "\nParu (AUR helper)"
-echo "********************"
+print_heading "Paru (AUR helper)"
 pacman -S --needed --noconfirm base-devel
 cd /tmp
 git clone https://aur.archlinux.org/paru.git
@@ -61,22 +65,19 @@ cd paru
 sudo -u ax makepkg -si --needed --noconfirm
 
 
-echo -e "\nDeny SSH root login"
-echo "********************"
+print_heading "Deny SSH root login"
 echo 'PermitRootLogin no' > /etc/ssh/sshd_config.d/20-deny_root.conf
 echo "done"
 
 
-echo -e "\nDOOM Emacs dependencies"
-echo "********************"
+print_heading "DOOM Emacs dependencies"
 # required dependencies
 pacman -S --needed --noconfirm git emacs ripgrep
 # optional dependencies
 pacman -S --needed --noconfirm fd
 
 
-echo -e "\nInstalling MEGAsync"
-echo "********************"
+print_heading "Installing MEGAsync"
 pacman -S --needed --noconfirm wget
 cd /tmp
 wget https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-x86_64.pkg.tar.zst
@@ -84,16 +85,14 @@ pacman -U --noconfirm "$PWD/megasync-x86_64.pkg.tar.zst"
 pacman -Syu --noconfirm
 
 
-echo -e "\nsystemd timeouts"
-echo "********************"
+print_heading "systemd timeouts"
 sed -i 's/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=30s/' /etc/systemd/system.conf
 sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=30s/' /etc/systemd/system.conf
 sed -i 's/#DefaultDeviceTimeoutSec=90s/DefaultDeviceTimeoutSec=30s/' /etc/systemd/system.conf
 echo "done"
 
 
-echo -e "\nInstalling nnn"
-echo "********************"
+print_heading "Installing nnn"
 pacman -R --noconfirm nnn
 cd /tmp
 git clone https://github.com/jarun/nnn
@@ -102,8 +101,7 @@ make O_NERD=1
 make install
 
 
-echo -e "\ntabbed for nnn tabbed preview plugin"
-echo "********************"
+print_heading "tabbed for nnn tabbed preview plugin"
 cd /tmp
 git clone https://git.suckless.org/tabbed
 cd tabbed
@@ -111,6 +109,4 @@ make
 make install
 
 
-echo -e "\n********************"
-echo "DONE"
-echo "********************"
+print_heading "DONE"
