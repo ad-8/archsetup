@@ -11,33 +11,32 @@ print_heading() {
     echo "$asterisks_line"
 }
 
+
 print_heading "pacman -Syu"
 pacman -Syu --noconfirm
 
 
-print_heading "installing pacman packages"
+print_heading "Installing pacman packages"
 packages=$(grep -v '^$' pacman-packages | sort | tr '\n' ' ')
 pacman -S --needed --noconfirm $packages
 
 
-print_heading "installing dependencies for dwm"
+print_heading "Installing dependencies for dwm"
 pacman -S --needed --noconfirm gcc make base-devel libx11 libxft libxinerama
 
 
-print_heading "installing dwm"
+print_heading "Installing dwm"
 cd /tmp
 git clone https://github.com/ad-8/dwm-ax
 cd dwm-ax
-# TODO evaluate if this finally works now
 mkdir -p /usr/share/xsessions
 cp dwm.desktop /usr/share/xsessions/
-# chmod was needed on debian
 chmod 644 /usr/share/xsessions/dwm.desktop
 make
 make clean install
 
 
-print_heading "installing dwmblocks"
+print_heading "Installing dwmblocks"
 cd /tmp
 git clone https://github.com/ad-8/dwmblocks
 cd dwmblocks
@@ -45,7 +44,7 @@ make
 make clean install
 
 
-print_heading "Flatpak stuff"
+print_heading "Installing Flatpaks"
 pacman -S --needed --noconfirm flatpak
 flatpak install --assumeyes flathub io.gitlab.librewolf-community
 flatpak install --assumeyes flathub ch.protonmail.protonmail-bridge
@@ -56,7 +55,7 @@ pacman -S --needed --noconfirm rustup
 sudo -u ax rustup default stable
 
 
-print_heading "Paru (AUR helper)"
+print_heading "Installing Paru (AUR helper)"
 pacman -S --needed --noconfirm base-devel
 cd /tmp
 git clone https://aur.archlinux.org/paru.git
@@ -70,7 +69,7 @@ echo 'PermitRootLogin no' > /etc/ssh/sshd_config.d/20-deny_root.conf
 echo "done"
 
 
-print_heading "DOOM Emacs dependencies"
+print_heading "Installing DOOM Emacs dependencies"
 # required dependencies
 pacman -S --needed --noconfirm git emacs ripgrep
 # optional dependencies
@@ -101,7 +100,7 @@ make O_NERD=1
 make install
 
 
-print_heading "tabbed for nnn tabbed preview plugin"
+print_heading "Installing tabbed for nnn tabbed preview plugin"
 cd /tmp
 git clone https://git.suckless.org/tabbed
 cd tabbed

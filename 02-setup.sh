@@ -12,12 +12,12 @@ print_heading() {
 }
 
 
-print_heading "installing paru packages"
+print_heading "Installing paru packages"
 packages=$(grep -v '^$' paru-packages | sort | tr '\n' ' ')
 paru -S --needed --noconfirm $packages
 
 
-print_heading "installing DOOM emacs"
+print_heading "Installing DOOM Emacs"
 rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
