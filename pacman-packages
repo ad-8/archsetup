@@ -40,6 +40,7 @@ nsxiv
 scrot
 helix
 wget
+htop
 
 clamav
 
@@ -47,12 +48,15 @@ gnome-keyring
 flatpak
 sxhkd
 usbutils
+polkit
+polkit-gnome
+pavucontrol
 
 alacritty
 arandr
 emacs
 gnome-disk-utility
-gnome-system-monitor
+mate-system-monitor
 gparted
 keepassxc
 lxappearance
