@@ -47,6 +47,13 @@ print_heading "nnn plugins"
 sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 
 
+print_heading "Fixing light (A program to control backlights and other hardware lights)"
+mkdir -p $HOME/.config/light/targets/sysfs/backlight/auto
+echo "0" > $HOME/.config/light/targets/sysfs/backlight/auto/minimum
+gpasswd -a $USER video
+echo "done"
+
+
 print_heading "changig shell to fish"
 chsh -s /usr/bin/fish
 

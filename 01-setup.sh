@@ -12,6 +12,9 @@ print_heading() {
 }
 
 
+SCRIPT_DIR=$(pwd)
+
+
 print_heading "pacman -Syu"
 pacman -Syu --noconfirm
 
@@ -108,20 +111,13 @@ make
 make install
 
 
-print_heading "Fixing light (A program to control backlights and other hardware lights)"
-mkdir -p $HOME/.config/light/targets/sysfs/backlight/auto
-echo "0" > $HOME/.config/light/targets/sysfs/backlight/auto/minimum
-gpasswd -a $USER video
-echo "done"
-
-
 print_heading "Setting up lightdm"
 pacman -S --needed --noconfirm lightdm lightdm-gtk-greeter
 systemctl enable lightdm
 
 
 print_heading "Configuring lightdm-gtk-greeter"
-cd $HOME/archsetup
+cd $SCRIPT_DIR
 mkdir -p /etc/lightdm
 cp lightdm-gtk-greeter.conf /etc/lightdm/
 chmod 644 /etc/lightdm/lightdm-gtk-greeter.conf
