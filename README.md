@@ -12,8 +12,3 @@ Before running the scripts, check/update the pacman/paru package lists (see `arc
 3. `sudo ./01-setup.sh`
 4. `./02-setup.sh`
 
-## Xorg
-If the archinstall script was used w/ the minimal option, that is w/o a desktop environment:
-1. install `lightdm` and `lightdm-gtk-greeter`
-2. `systemctl enable lightdm`
-
