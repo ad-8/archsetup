@@ -110,13 +110,13 @@ make install
 
 print_heading "Configuring lightdm-gtk-greeter"
 cd $HOME/archsetup
-mkdir -p /etc/lightdm/
+mkdir -p /etc/lightdm
 cp lightdm-gtk-greeter.conf /etc/lightdm/
 chmod 644 /etc/lightdm/lightdm-gtk-greeter.conf
 
 
 print_heading "Fixing light (A program to control backlights and other hardware lights)"
-mkdir -p $HOME/.config/light/targets/sysfs/backlight/auto/
+mkdir -p $HOME/.config/light/targets/sysfs/backlight/auto
 echo "0" > $HOME/.config/light/targets/sysfs/backlight/auto/minimum
 gpasswd -a $USER video
 echo "done"
