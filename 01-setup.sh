@@ -13,6 +13,7 @@ print_heading() {
 
 
 SCRIPT_DIR=$(pwd)
+USERNAME="ax"
 
 
 print_heading "pacman -Syu"
@@ -121,6 +122,12 @@ cd $SCRIPT_DIR
 mkdir -p /etc/lightdm
 cp lightdm-gtk-greeter.conf /etc/lightdm/
 chmod 644 /etc/lightdm/lightdm-gtk-greeter.conf
+echo "done"
+
+
+print_heading "Misc"
+gpasswd -a $USERNAME video # requirement for light
+echo "done"
 
 
 print_heading "DONE"

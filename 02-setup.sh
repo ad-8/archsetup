@@ -50,7 +50,6 @@ sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/get
 print_heading "Fixing light (A program to control backlights and other hardware lights)"
 mkdir -p $HOME/.config/light/targets/sysfs/backlight/auto
 echo "0" > $HOME/.config/light/targets/sysfs/backlight/auto/minimum
-gpasswd -a $USER video
 echo "done"
 
 
