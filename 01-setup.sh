@@ -108,4 +108,11 @@ make
 make install
 
 
+print_heading "Configuring lightdm-gtk-greeter"
+cd $HOME/archsetup
+mkdir -p /etc/lightdm/
+cp lightdm-gtk-greeter.conf /etc/lightdm/
+chmod 644 /etc/lightdm/lightdm-gtk-greeter.conf
+
+
 print_heading "DONE"
