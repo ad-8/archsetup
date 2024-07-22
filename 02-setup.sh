@@ -44,6 +44,10 @@ echo "0" > $HOME/.config/light/targets/sysfs/backlight/auto/minimum
 echo "done"
 
 
+print_heading "Restoring crontab"
+(crontab -l 2>/dev/null; cat $SCRIPT_DIR/cfgs/crontab.bak) | crontab -
+
+
 print_heading "changig shell to fish"
 chsh -s /usr/bin/fish
 
