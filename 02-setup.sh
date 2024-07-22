@@ -48,7 +48,12 @@ print_heading "Restoring crontab"
 (crontab -l 2>/dev/null; cat $SCRIPT_DIR/cfgs/crontab.bak) | crontab -
 
 
-print_heading "changig shell to fish"
+print_heading "getting alacritty themes"
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
+
+print_heading "changing shell to fish"
 chsh -s /usr/bin/fish
 
 

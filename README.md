@@ -11,4 +11,5 @@ Before running the scripts, check/update the package lists in the `pkgs` directo
 2. install `git`, clone this repo && cd into it
 3. `sudo ./01-setup.sh`
 4. `./02-setup.sh`
+5. reboot the system
 
