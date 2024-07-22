@@ -21,7 +21,7 @@ pacman -Syu --noconfirm
 
 
 print_heading "Installing pacman packages"
-packages=$(grep -v '^$' pacman-packages | sort | tr '\n' ' ')
+packages=$(grep -v '^$' pkgs/pacman | sort | tr '\n' ' ')
 pacman -S --needed --noconfirm $packages
 
 
@@ -49,9 +49,9 @@ make clean install
 
 
 print_heading "Installing Flatpaks"
+packages=$(grep -v '^$' pkgs/flatpak | sort | tr '\n' ' ')
 pacman -S --needed --noconfirm flatpak
-flatpak install --assumeyes flathub io.gitlab.librewolf-community
-flatpak install --assumeyes flathub ch.protonmail.protonmail-bridge
+flatpak install --assumeyes flathub $packages
 
 
 print_heading "Installing Rust"

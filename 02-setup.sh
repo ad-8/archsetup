@@ -13,7 +13,7 @@ print_heading() {
 
 
 print_heading "Installing paru packages"
-packages=$(grep -v '^$' paru-packages | sort | tr '\n' ' ')
+packages=$(grep -v '^$' pkgs/paru | sort | tr '\n' ' ')
 paru -S --needed --noconfirm $packages
 
 
