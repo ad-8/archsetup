@@ -117,4 +117,10 @@ gpasswd -a $USERNAME video # requirement for light
 echo "done"
 
 
+print_heading "Setting up cron"
+pacman -S --needed --noconfirm cronie
+systemctl enable cronie.service
+(crontab -l 2>/dev/null; cat $SCRIPT_DIR/cfgs/crontab.bak) | crontab -
+
+
 print_heading "DONE"
