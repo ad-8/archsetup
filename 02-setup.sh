@@ -4,7 +4,7 @@ source ./utils.sh
 
 
 print_heading "Installing paru packages"
-packages=$(grep -v '^$' pkgs/paru | sort | tr '\n' ' ')
+packages=$(grep -v '^$' $SCRIPT_DIR/pkgs/paru | sort | tr '\n' ' ')
 paru -S --needed --noconfirm $packages
 
 

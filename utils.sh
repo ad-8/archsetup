@@ -10,3 +10,6 @@ print_heading() {
     echo "$input_string"
     echo "$asterisks_line"
 }
+
+SCRIPT_DIR=$(pwd)
+USERNAME="ax"

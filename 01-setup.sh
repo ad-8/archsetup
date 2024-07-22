@@ -3,16 +3,12 @@
 source ./utils.sh
 
 
-SCRIPT_DIR=$(pwd)
-USERNAME="ax"
-
-
 print_heading "pacman -Syu"
 pacman -Syu --noconfirm
 
 
 print_heading "Installing pacman packages"
-packages=$(grep -v '^$' pkgs/pacman | sort | tr '\n' ' ')
+packages=$(grep -v '^$' $SCRIPT_DIR/pkgs/pacman | sort | tr '\n' ' ')
 pacman -S --needed --noconfirm $packages
 
 
@@ -40,7 +36,7 @@ make clean install
 
 
 print_heading "Installing Flatpaks"
-packages=$(grep -v '^$' pkgs/flatpak | sort | tr '\n' ' ')
+packages=$(grep -v '^$' $SCRIPT_DIR/pkgs/flatpak | sort | tr '\n' ' ')
 pacman -S --needed --noconfirm flatpak
 flatpak install --assumeyes flathub $packages
 
