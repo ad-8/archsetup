@@ -1,15 +1,6 @@
-#!/usr/bin/bash
+#!/usr/bin/env sh
 
-print_heading() {
-    input_string="$*"
-    string_length=${#input_string}
-    asterisks_line=$(printf '%*s' "$string_length" | tr ' ' '*')
-
-    echo
-    echo "$asterisks_line"
-    echo "$input_string"
-    echo "$asterisks_line"
-}
+source ./utils.sh
 
 
 SCRIPT_DIR=$(pwd)
@@ -120,7 +111,7 @@ systemctl enable lightdm
 print_heading "Configuring lightdm-gtk-greeter"
 cd $SCRIPT_DIR
 mkdir -p /etc/lightdm
-cp lightdm-gtk-greeter.conf /etc/lightdm/
+cp cfgs/lightdm-gtk-greeter.conf /etc/lightdm/
 chmod 644 /etc/lightdm/lightdm-gtk-greeter.conf
 echo "done"
 
