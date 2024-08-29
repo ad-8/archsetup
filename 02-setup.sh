@@ -46,6 +46,7 @@ echo "done"
 
 print_heading "Restoring crontab"
 (crontab -l 2>/dev/null; cat $SCRIPT_DIR/cfgs/crontab.bak) | crontab -
+echo "done"
 
 
 print_heading "getting alacritty themes"

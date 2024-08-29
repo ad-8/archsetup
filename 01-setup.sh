@@ -114,6 +114,8 @@ echo "done"
 
 print_heading "Misc"
 gpasswd -a $USERNAME video # requirement for light
+# a firewall seems to be recommended for laptops when using public wifis
+systemctl enable firewalld
 echo "done"
 
 
