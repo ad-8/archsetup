@@ -21,16 +21,16 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
 print_heading "dotfiles"
 mkdir -p $HOME/.local/share
+# TODO stow will fail if a single config dir, e.g. ~/.config/fish, already exists
 rm -rf ~/.config/fish
-mkdir -p ~/my
-cd ~/my
+cd $HOME
 git clone https://github.com/ad-8/dotfiles
 cd dotfiles
 stow -vR --target=$HOME *
 
 
 print_heading "scripts"
-cd $HOME/my
+cd $HOME
 git clone https://github.com/ad-8/scripts
 
 
