@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+LOG_FILE="$HOME/archsetup-part2.log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
 source ./utils.sh
 
 
