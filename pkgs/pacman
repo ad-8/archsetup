@@ -10,10 +10,12 @@ dunst
 dmenu
 fish
 nnn
-picom
 rofi
 rofi-calc
+xss-lock
+network-manager-applet
 
+arch-audit
 bat
 eza
 fd
@@ -33,7 +35,6 @@ tldr
 feh
 pacman-contrib
 ncdu
-dua-cli
 zip
 unzip
 nsxiv
@@ -44,22 +45,26 @@ htop
 
 clamav
 
-gnome-keyring
+archlinux-contrib
+firewalld
 flatpak
-sxhkd
-usbutils
+fwupd
+gnome-keyring
+pavucontrol
 polkit
 polkit-gnome
-pavucontrol
+proton-vpn-gtk-app
+sxhkd
+usbutils
 
 alacritty
 arandr
 emacs
 gnome-disk-utility
-mate-system-monitor
 gparted
 keepassxc
 lxappearance
+mission-center
 qbittorrent
 qutebrowser
 thunderbird
@@ -68,7 +73,12 @@ libreoffice-fresh
 hunspell-de
 hyphen-de
 
-celluloid
+gvfs
+gvfs-mtp
+
+android-udev
+
+android-tools
 
 blanket
 chromaprint
@@ -80,6 +90,7 @@ xorg-xsetroot
 zathura
 zathura-pdf-poppler
 smartmontools
+pdftk
 
 clojure 
 code
@@ -88,6 +99,16 @@ leiningen
 rustup
 tokei
 github-cli
+
+ruby
+ruby-irb
+ruby-docs
+ruby-rdoc
+ruby-stdlib
+
+sqlitebrowser
+postgresql
+postgresql-libs
 
 syncthing
 
